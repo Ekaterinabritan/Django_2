@@ -1,15 +1,11 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ user.name }}'s Orders{% endblock %}
+{% block title %}Обновление карточки продукта{% endblock %}
 
 {% block content %}
-    <h2>все заказы пользователя: {{ user.name }}</h2>
-    {% for order in orders %}
-        <h1>order</h1>
-        <p>{{ order.date_ordered }}</p>
-        <p>{{ order.total_price }}</p>
-                <h3>Products</h3>
-                <p>{{ products.pop }}</p>
-
-    {% endfor %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Отправить">
+</form>
 {% endblock %}

@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ user.name }}'s Products for last  {{ days }} days {% endblock %}
+{% block title %}Обновление карточки продукта{% endblock %}
 
 {% block content %}
-    <h2>все продукты пользователя: {{ user.name }} за последние {{ days }} дней</h2>
-    {% for product in product_set %}
-
-                <p>{{ product }}</p>
-    {% endfor %}
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Отправить">
+</form>
 {% endblock %}
