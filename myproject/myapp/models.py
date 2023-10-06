@@ -17,12 +17,18 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=8, decimal_places=2)
     description = models.TextField()
     quantity = models.IntegerField()
+    image = models.ImageField(upload_to='images')
+    # product_image поле не обязательное !
 
     def __str__(self):
         return f'Product name: {self.name}, price: {self.price},  description: {self.description}, quantity: {self.quantity}'
+
 
 class Order(models.Model):
     customer = models.ForeignKey(User, on_delete=models.CASCADE)
     products = models.ManyToManyField(Product)
     date_ordered = models.DateField(auto_now_add=True)
     total_price = models.DecimalField(max_digits=8, decimal_places=2)
+
+    def __str__(self):
+        return f'Customer: {self.customer.name}, products: {self.products},  date_ordered: {self.date_ordered}, total_price: {self.total_price}'
